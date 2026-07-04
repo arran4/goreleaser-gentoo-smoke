@@ -1,0 +1,37 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout app repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - name: Build GoReleaser from PR branch
+        run: |
+          git clone --depth=1 \
+            --branch gentoo-ebuild-support-1288548533621874886 \
+            https://github.com/arran4/goreleaser.git \
+            /tmp/goreleaser-pr
+          cd /tmp/goreleaser-pr
+          go install ./cmd/goreleaser
+          echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
+      - name: Run GoReleaser
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GENTOO_OVERLAY_TOKEN: ${{ secrets.GENTOO_OVERLAY_TOKEN }}
+        run: |
+          goreleaser release --clean

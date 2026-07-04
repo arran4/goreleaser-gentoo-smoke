@@ -1,0 +1,49 @@
+version: 2
+
+project_name: goreleaser-gentoo-smoke
+
+builds:
+  - id: default
+    main: .
+    binary: goreleaser-gentoo-smoke
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+
+archives:
+  - id: default
+    formats:
+      - tar.gz
+    files:
+      - README.md
+      - LICENSE
+
+checksum:
+  name_template: "checksums.txt"
+
+release:
+  github:
+    owner: arran4
+    name: goreleaser-gentoo-smoke
+
+gentoos:
+  - name: goreleaser-gentoo-smoke
+    bin: true
+    type: bin
+    repository:
+      owner: arran4
+      name: goreleaser-gentoo-smoke-overlay
+      branch: main
+      token: "{{ .Env.GENTOO_OVERLAY_TOKEN }}"
+    homepage: https://github.com/arran4/goreleaser-gentoo-smoke
+    description: Disposable GoReleaser Gentoo ebuild smoke test
+    license: MIT
+    keywords:
+      - ~amd64
+      - ~arm64
+    keep_versions: 2
+    commit_msg_template: "app-misc/goreleaser-gentoo-smoke-bin: bump to {{ .Tag }}"
