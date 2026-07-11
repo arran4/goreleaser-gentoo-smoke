@@ -7,9 +7,26 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'The action to run with git-tag-inc (e.g., "patch", "minor", "major").'
+        description: 'The action to run with git-tag-inc'
+        type: choice
         required: true
         default: 'patch'
+        options:
+          - patch
+          - minor
+          - major
+          - release
+          - test
+          - uat
+          - alpha
+          - beta
+          - rc
+          - next
+      force:
+        description: 'Force'
+        type: boolean
+        required: true
+        default: true
 
 permissions:
   contents: write
@@ -31,7 +48,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         uses: arran4/git-tag-inc-action@main
         with:
-          action: ${{ github.event.inputs.action }}
+          action: ${{ inputs.force == true && '--force ' || '' }}${{ inputs.action }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Push new tag
         if: github.event_name == 'workflow_dispatch'
