@@ -21,6 +21,8 @@ archives:
     files:
       - README.md
       - LICENSE
+      - goreleaser-gentoo-smoke.1
+      - config.yaml
 
 checksum:
   name_template: "checksums.txt"
