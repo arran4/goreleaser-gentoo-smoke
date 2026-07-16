@@ -19,6 +19,10 @@ func main() {
 	}
 
 	if *configFlag != "" {
+		if _, err := os.Stat(*configFlag); err != nil {
+			fmt.Fprintf(os.Stderr, "Error accessing config file: %v\n", err)
+			os.Exit(1)
+		}
 		fmt.Printf("Using config file: %s\n", *configFlag)
 	}
 
