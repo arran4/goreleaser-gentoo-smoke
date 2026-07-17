@@ -32,6 +32,35 @@ release:
     owner: arran4
     name: goreleaser-gentoo-smoke
 
+brews:
+  - name: goreleaser-gentoo-smoke
+    repository:
+      owner: arran4
+      name: homebrew-goreleaser-gentoo-smoke
+    install: |
+      bin.install "goreleaser-gentoo-smoke"
+      man1.install "goreleaser-gentoo-smoke.1"
+      etc.install "config.yaml"
+
+nfpms:
+  - id: default
+    package_name: goreleaser-gentoo-smoke
+    vendor: arran4
+    homepage: https://github.com/arran4/goreleaser-gentoo-smoke
+    maintainer: arran4
+    description: Disposable GoReleaser Gentoo ebuild smoke test
+    license: MIT
+    formats:
+      - deb
+      - rpm
+    contents:
+      - src: goreleaser-gentoo-smoke.1
+        dst: /usr/share/man/man1/goreleaser-gentoo-smoke.1
+        type: man
+      - src: config.yaml
+        dst: /etc/goreleaser-gentoo-smoke/config.yaml
+        type: config
+
 gentoos:
   - name: goreleaser-gentoo-smoke
     bin: true
