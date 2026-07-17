@@ -6,7 +6,7 @@ In GoReleaser, packages frequently include additional files besides the binary, 
 
 Different packagers in GoReleaser handle the installation of these extra files in various ways. For instance:
 * `brews` provides an `install` block where users can manually specify `man1.install "file.1"` or `etc.install "config.yaml"`.
-* `nfpms` uses a `contents` array mapping the source file to an exact destination (`dst`) and setting the `type` (e.g. `man` or `config`).
+* `nfpms` uses a `contents` array mapping the source file to an exact destination (`dst`) and setting the `type` (e.g. `config` or omitting it for regular files).
 
 However, the current implementation in the `feature/gentoo-ebuild` PR (and the `gentoos` configuration) does not provide a mechanism for the generated ebuild to actually *install* extra files that are specified.
 
@@ -39,7 +39,6 @@ Please update the `Gentoo` struct and the ebuild generation logic to support ins
        contents:
          - src: my-package.1
            dst: /usr/share/man/man1/my-package.1
-           type: man
          - src: config.yaml
            dst: /etc/my-package/config.yaml
            type: config

@@ -56,7 +56,6 @@ nfpms:
     contents:
       - src: goreleaser-gentoo-smoke.1
         dst: /usr/share/man/man1/goreleaser-gentoo-smoke.1
-        type: man
       - src: config.yaml
         dst: /etc/goreleaser-gentoo-smoke/config.yaml
         type: config
