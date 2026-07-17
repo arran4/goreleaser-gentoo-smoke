@@ -27,6 +27,11 @@ on:
         type: boolean
         required: true
         default: true
+      goreleaser_branch:
+        description: 'The branch to get goreleaser source from'
+        type: string
+        required: false
+        default: 'gentoo-ebuild-support-1288548533621874886'
 
 permissions:
   contents: write
@@ -61,7 +66,7 @@ jobs:
       - name: Build GoReleaser from PR branch
         run: |
           git clone --depth=1 \
-            --branch gentoo-ebuild-support-1288548533621874886 \
+            --branch ${{ inputs.goreleaser_branch || 'gentoo-ebuild-support-1288548533621874886' }} \
             https://github.com/arran4/goreleaser.git \
             /tmp/goreleaser-pr
           cd /tmp/goreleaser-pr
