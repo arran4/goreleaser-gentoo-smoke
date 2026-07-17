@@ -41,6 +41,8 @@ gentoos:
       name: goreleaser-gentoo-smoke-overlay
       branch: main
       token: "{{ .Env.GENTOO_OVERLAY_TOKEN }}"
+      pull_request:
+        enabled: true
     homepage: https://github.com/arran4/goreleaser-gentoo-smoke
     description: Disposable GoReleaser Gentoo ebuild smoke test
     license: MIT
