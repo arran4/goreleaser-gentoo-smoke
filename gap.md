@@ -4,7 +4,7 @@
 
 In GoReleaser, packages frequently include additional files besides the binary, such as man pages (`.1` files) or configuration files (`.yaml`, `.conf`). These extra files are typically defined in the `archives` section and copied over.
 
-The proposed or implemented Gentoo support uses helper-specific fields:
+The proposed or implemented Gentoo support uses helper-specific fields corresponding to Gentoo's install functions (e.g., `doins`, `doman`, `dobin`, `doconfd`, `dodir`, `dodoc`, `doenvd`, `doexe`, `doheader`, `doinitd`, `dosbin`, `dosym`, etc.):
 
 ```yaml
 files:
