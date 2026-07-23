@@ -14,6 +14,8 @@ useflags:
 files:
   - goreleaser-gentoo-smoke.1
   - config.yaml
+  - systemd-service.service
+  - initd-script.sh
 
 doins:
   - src: config.yaml
@@ -21,6 +23,10 @@ doins:
 
 doman:
   - goreleaser-gentoo-smoke.1
+
+systemd:
+  - src: systemd-service.service
+    use: [systemd]
 
 doinitd:
   - src: initd-script.sh

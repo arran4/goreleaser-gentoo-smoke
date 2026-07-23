@@ -53,6 +53,8 @@ gentoos:
     files:
       - goreleaser-gentoo-smoke.1
       - config.yaml
+      - systemd-service.service
+      - initd-script.sh
 
     doins:
       - src: config.yaml
@@ -65,9 +67,14 @@ gentoos:
       - flag: systemd
         description: enables systemd installation
 
+    systemd:
+      - src: systemd-service.service
+        use: [systemd]
+
     doinitd:
       - src: initd-script.sh
         dst: /etc/init.d/goreleaser-gentoo-smoke
+        use: [systemd]
 
     dosym:
       - src: /usr/bin/goreleaser-gentoo-smoke
