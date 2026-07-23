@@ -61,5 +61,17 @@ gentoos:
     doman:
       - goreleaser-gentoo-smoke.1
 
+    useflags:
+      - flag: systemd
+        description: enables systemd installation
+
+    doinitd:
+      - src: initd-script.sh
+        dst: /etc/init.d/goreleaser-gentoo-smoke
+
+    dosym:
+      - src: /usr/bin/goreleaser-gentoo-smoke
+        dst: /usr/bin/ggs
+
     keep_versions: 2
     commit_msg_template: "app-misc/goreleaser-gentoo-smoke-bin: bump to {{ .Tag }}"
