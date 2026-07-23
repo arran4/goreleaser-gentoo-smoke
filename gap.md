@@ -31,7 +31,7 @@ systemd:
 doinitd:
   - src: initd-script.sh
     dst: /etc/init.d/goreleaser-gentoo-smoke
-    use: [systemd]
+    use: ["!systemd"]
 
 dosym:
   - src: /usr/bin/goreleaser-gentoo-smoke
