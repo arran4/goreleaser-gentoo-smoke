@@ -49,5 +49,36 @@ gentoos:
     keywords:
       - ~amd64
       - ~arm64
+
+    files:
+      - goreleaser-gentoo-smoke.1
+      - config.yaml
+      - systemd-service.service
+      - initd-script.sh
+
+    doins:
+      - src: config.yaml
+        dst: /etc/goreleaser-gentoo-smoke/goreleaser-gentoo-smoke.conf
+
+    doman:
+      - goreleaser-gentoo-smoke.1
+
+    useflags:
+      - flag: systemd
+        description: enables systemd installation
+
+    systemd:
+      - src: systemd-service.service
+        use: [systemd]
+
+    doinitd:
+      - src: initd-script.sh
+        dst: /etc/init.d/goreleaser-gentoo-smoke
+        use: ["!systemd"]
+
+    dosym:
+      - src: /usr/bin/goreleaser-gentoo-smoke
+        dst: /usr/bin/ggs
+
     keep_versions: 2
     commit_msg_template: "app-misc/goreleaser-gentoo-smoke-bin: bump to {{ .Tag }}"
