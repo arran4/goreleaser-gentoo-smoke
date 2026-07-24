@@ -29,7 +29,7 @@ The overlay repository is:
 
 This smoke test targets:
 
-<https://github.com/arran4/goreleaser/pull/2>
+[<https://github.com/arran4/goreleaser/>](https://github.com/arran4/goreleaser/tree/feature/gentoo-ebuild)
 
 The release workflow builds GoReleaser from the PR branch rather than using an
 official GoReleaser release.
