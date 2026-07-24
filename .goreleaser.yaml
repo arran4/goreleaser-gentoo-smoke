@@ -51,10 +51,10 @@ gentoos:
       - ~arm64
 
     files:
-      - goreleaser-gentoo-smoke.1
-      - config.yaml
-      - systemd-service.service
-      - initd-script.sh
+      - glob: goreleaser-gentoo-smoke.1
+      - glob: config.yaml
+      - glob: systemd-service.service
+      - glob: initd-script.sh
 
     doins:
       - src: config.yaml
