@@ -70,6 +70,7 @@ jobs:
             https://github.com/arran4/goreleaser.git \
             /tmp/goreleaser-pr
           cd /tmp/goreleaser-pr
+          git log -1
           go install .
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
       - name: Run GoReleaser
