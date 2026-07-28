@@ -81,4 +81,5 @@ gentoos:
         dst: /usr/bin/ggs
 
     keep_versions: 2
+    version_retention_strategy: keep_latest
     commit_msg_template: "app-misc/goreleaser-gentoo-smoke-bin: bump to {{ .Tag }}"
