@@ -40,9 +40,13 @@ gentoos:
       owner: arran4
       name: goreleaser-gentoo-smoke-overlay
       token: "{{ .Env.GENTOO_OVERLAY_TOKEN }}"
-      branch: ebuild-update
+      branch: "{{.ProjectName}}-{{.Version}}"
       pull_request:
         enabled: true
+        base:
+          owner: arran4
+          name: goreleaser-gentoo-smoke-overlay
+          branch: main
     homepage: https://github.com/arran4/goreleaser-gentoo-smoke
     description: Disposable GoReleaser Gentoo ebuild smoke test
     license: MIT
