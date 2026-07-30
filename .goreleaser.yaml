@@ -32,7 +32,7 @@ release:
     owner: arran4
     name: goreleaser-gentoo-smoke
 
-gentoos:
+gentoo_overlay:
   - name: goreleaser-gentoo-smoke
     bin: true
     type: bin
