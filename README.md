@@ -31,6 +31,8 @@ This smoke test targets:
 
 [<https://github.com/arran4/goreleaser/>](https://github.com/arran4/goreleaser/tree/feature/gentoo-ebuild)
 
+PR: https://github.com/goreleaser/goreleaser/pull/6725
+
 The release workflow builds GoReleaser from the PR branch rather than using an
 official GoReleaser release.
 
