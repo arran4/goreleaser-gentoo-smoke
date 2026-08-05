@@ -78,4 +78,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GENTOO_OVERLAY_TOKEN: ${{ secrets.GENTOO_OVERLAY_TOKEN }}
         run: |
-          goreleaser release --clean --debug
+          goreleaser release --clean 
